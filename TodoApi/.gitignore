@@ -1,0 +1,38 @@
+# .NET Core
+.vs/
+.vscode/
+.idea/
+bin/
+obj/
+
+# User-specific files
+user secrets
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer temporary files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# JetBrains Rider
+.idea/
+
+# ASP.NET Core
+wwwroot/
+
+# Linux/macOS specific files
+.DS_Store
+
+# ASP.NET Core specific build files
+project.lock.json
+project.fragment.lock.json
