@@ -15,11 +15,18 @@
     state: absent
   ignore_errors: true
 
-- name: Deploy new Docker container
-  ansible.builtin.docker_container:
-    name: "{{ docker_container_name }}"
-    image: "{{ docker_image_name }}"
-    state: started
-    ports:
-      - "{{ app_port }}:5196"
-    restart_policy: always
+- name: Create application directory
+  file:
+    path: "/opt/{{app_name}}"
+    state: directory
+    mode: '0755'
+
+- name: Copy docker-compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: "/opt/{{app_name}}/docker-compose.yml"
+
+- name: Start application with Docker Compose
+  command: docker-compose up -d
+  args:
+    chdir: "/opt/{{app_name}}"
