@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/mikky/webapp/TodoApi/TodoApi.csproj": {}
+    "/home/mikky/project/aspdotnet/TodoApi/TodoApi.csproj": {}
   },
   "projects": {
-    "/home/mikky/webapp/TodoApi/TodoApi.csproj": {
+    "/home/mikky/project/aspdotnet/TodoApi/TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/mikky/webapp/TodoApi/TodoApi.csproj",
+        "projectUniqueName": "/home/mikky/project/aspdotnet/TodoApi/TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "/home/mikky/webapp/TodoApi/TodoApi.csproj",
+        "projectPath": "/home/mikky/project/aspdotnet/TodoApi/TodoApi.csproj",
         "packagesPath": "/home/mikky/.nuget/packages/",
-        "outputPath": "/home/mikky/webapp/TodoApi/obj/",
+        "outputPath": "/home/mikky/project/aspdotnet/TodoApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/mikky/.nuget/NuGet/NuGet.Config"

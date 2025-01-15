@@ -3,6 +3,7 @@
   hosts: all
   become: true
   vars:
+    app_name  : "web-api-app"
     docker_image_name: mikkyms/webapi-aspdotnet
     docker_container_name: webapi-container
     app_port: 5196
