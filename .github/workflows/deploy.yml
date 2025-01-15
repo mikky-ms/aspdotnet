@@ -22,6 +22,11 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H 192.168.10.56 >> ~/.ssh/known_hosts
+        
+    # Step 3: Disable sudo password prompt
+    - name: Disable sudo password prompt
+      run: |
+        echo "${USER} ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/99-no-password
 
     # Step 3: Install Ansible
     - name: Install Ansible
