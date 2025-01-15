@@ -17,13 +17,11 @@ jobs:
 
     # Step 2: Set up SSH key
     - name: Set up SSH key
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H remote_host >> ~/.ssh/known_hosts
+        ssh-keyscan -H 192.168.10.56 >> ~/.ssh/known_hosts
 
     # Step 3: Install Ansible
     - name: Install Ansible
@@ -34,4 +32,5 @@ jobs:
     # Step 4: Run Ansible playbook
     - name: Run Ansible playbook
       run: |
+        cd ansible
         ansible-playbook -i inventory.yml deploy_todoapi.yml
