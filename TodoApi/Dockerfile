@@ -1,27 +1,24 @@
-# Base image untuk runtime
+# Base image for runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 5196
 
-# Konfigurasi environment
+# Configure environment variable for URL binding
 ENV ASPNETCORE_URLS=http://+:5196
-
-# User yang digunakan
-USER app
 
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILDPLATFORM=linux/amd64
 ARG configuration=Release
 
-# Direktori kerja untuk source code
+# Set working directory for source code
 WORKDIR /src
 
-# Salin file proyek dan restore dependency
+# Copy project file and restore dependencies
 COPY ["TodoApi.csproj", "./"]
 RUN dotnet restore "TodoApi.csproj"
 
-# Salin semua file ke container dan lakukan build
+# Copy all files and build the application
 COPY . .
 RUN dotnet build "TodoApi.csproj" -c $configuration -o /app/build
 
@@ -30,8 +27,15 @@ FROM build AS publish
 ARG configuration=Release
 RUN dotnet publish "TodoApi.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
-# Final stage untuk runtime
+# Final stage for runtime
 FROM base AS final
 WORKDIR /app
+
+# Copy published application from publish stage
 COPY --from=publish /app/publish .
+
+# Set default environment variable
+ENV ASPNETCORE_ENVIRONMENT=Development
+
+# Application entry point
 ENTRYPOINT ["dotnet", "TodoApi.dll"]
