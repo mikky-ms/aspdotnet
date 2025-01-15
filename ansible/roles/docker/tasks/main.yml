@@ -1,4 +1,10 @@
 ---
+# Install Python requests library
+- name: Install Python requests module
+  pip:
+    name: requests
+    state: present
+
 # Install Docker
 - name: Install required packages
   apt:
