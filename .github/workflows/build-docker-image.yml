@@ -21,4 +21,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Push the image to Docker Hub
-      run: docker push mikkyms/web-api
+      run: docker push mikkyms/webapi-aspdotnet:latest
