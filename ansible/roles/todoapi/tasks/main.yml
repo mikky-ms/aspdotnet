@@ -1,18 +1,25 @@
-- name: Remove existing container if it exists
-  command: >
-    docker rm -f {{ docker_container_name }}
-  ignore_errors: yes
-  become: true
+- name: Pull Docker image from Docker Hub
+  ansible.builtin.docker_image:
+    name: "{{ docker_image_name }}"
+    source: pull
 
-- name: Remove dangling images
-  command: >
-    docker image prune -f
-  ignore_errors: yes
-  become: true
+- name: Stop existing container if running
+  ansible.builtin.docker_container:
+    name: "{{ docker_container_name }}"
+    state: stopped
+  ignore_errors: true
 
-- name: Run the Docker container
-  command: >
-    docker run -d --name {{ docker_container_name }}
-    -p {{ app_port }}:5196
-    {{ docker_image_name }}
-  become: true
+- name: Remove existing container if present
+  ansible.builtin.docker_container:
+    name: "{{ docker_container_name }}"
+    state: absent
+  ignore_errors: true
+
+- name: Deploy new Docker container
+  ansible.builtin.docker_container:
+    name: "{{ docker_container_name }}"
+    image: "{{ docker_image_name }}"
+    state: started
+    ports:
+      - "{{ app_port }}:5196"
+    restart_policy: always
