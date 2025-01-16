@@ -35,7 +35,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 # Set default environment variable
-ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_ENVIRONMENT=Production
 
 # Application entry point
 ENTRYPOINT ["dotnet", "TodoApi.dll"]
