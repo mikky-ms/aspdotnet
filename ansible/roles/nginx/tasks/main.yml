@@ -1,0 +1,50 @@
+---
+- name: Create application directory
+  file:
+    path: "/opt/{{app_name}}"
+    state: directory
+    mode: '0755'
+
+- name: Copy docker-compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: "/opt/{{app_name}}/docker-compose.yml"
+
+- name: Create certs directory on the target server
+  file:
+    path: "/opt/{{app_name}}/certs"
+    state: directory
+    mode: '0755'
+
+- name: Copy server.key
+  copy:
+    src: ../certs/server.key
+    dest: "/opt/{{app_name}}/certs/server.key"
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: Copy server.crt
+  copy:
+    src: ../certs/server.crt
+    dest: "/opt/{{app_name}}/certs/server.crt"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Create nginx directory
+  file:
+    path: "/opt/{{ app_name }}/nginx"
+    state: directory
+    mode: '0755'
+
+- name: Copy nginx configuration file
+  template:
+    src: nginx.conf.j2
+    dest: "/opt/{{ app_name }}/nginx/nginx.conf"
+
+
+- name: Start application with Docker Compose
+  command: docker-compose up -d
+  args:
+    chdir: "/opt/{{ app_name }}"
