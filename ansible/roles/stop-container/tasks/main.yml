@@ -1,0 +1,25 @@
+- name: Stop existing container if running
+  ansible.builtin.docker_container:
+    name: "{{ docker_container_name }}"
+    state: stopped
+    image: "{{ docker_image_name }}"
+  ignore_errors: true
+
+- name: Remove existing container if present
+  ansible.builtin.docker_container:
+    name: "{{ docker_container_name }}"
+    state: absent
+  ignore_errors: true
+
+- name: Stop watchtower container 
+  ansible.builtin.docker_container:
+    name: watchtower
+    state: stopped
+    image: containrrr/watchtower:latest
+  ignore_errors: true
+
+- name: Remove existing container if present
+  ansible.builtin.docker_container:
+    name: watchtower
+    state: absent
+  ignore_errors: true

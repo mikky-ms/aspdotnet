@@ -1068,11 +1068,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/mikky/project-backup/aspdotnet/TodoApi/TodoApi.csproj",
+      "projectUniqueName": "/home/mikky/SINDIKA/magang/project1/aspdotnet/TodoApi/TodoApi.csproj",
       "projectName": "TodoApi",
-      "projectPath": "/home/mikky/project-backup/aspdotnet/TodoApi/TodoApi.csproj",
+      "projectPath": "/home/mikky/SINDIKA/magang/project1/aspdotnet/TodoApi/TodoApi.csproj",
       "packagesPath": "/home/mikky/.nuget/packages/",
-      "outputPath": "/home/mikky/project-backup/aspdotnet/TodoApi/obj/",
+      "outputPath": "/home/mikky/SINDIKA/magang/project1/aspdotnet/TodoApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/mikky/.nuget/NuGet/NuGet.Config"

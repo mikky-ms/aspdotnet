@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WhdGdI2acTbDM4BlnL3PCioywfsbcZOTGtb25AFZuvHTxwVBCotMg0PU7RBxeGH93ZRskoZ0CJ5GzBf6nG3W4A==",
+  "dgSpecHash": "nZAImLwlTtlhltSe327TMBNLMiNhR9mW/vFTQltlDjLO1H5PxKQa7x3Vob9Q2pVqS3L9xo1HYYnMddqfyMcEWA==",
   "success": true,
-  "projectFilePath": "/home/mikky/project-backup/aspdotnet/TodoApi/TodoApi.csproj",
+  "projectFilePath": "/home/mikky/SINDIKA/magang/project1/aspdotnet/TodoApi/TodoApi.csproj",
   "expectedPackageFiles": [
     "/home/mikky/.nuget/packages/microsoft.entityframeworkcore/9.0.0/microsoft.entityframeworkcore.9.0.0.nupkg.sha512",
     "/home/mikky/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.0/microsoft.entityframeworkcore.abstractions.9.0.0.nupkg.sha512",

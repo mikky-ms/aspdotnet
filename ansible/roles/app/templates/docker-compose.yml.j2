@@ -3,8 +3,9 @@ version: '3.8'
 services:
   {{ app_name }}:
     image: "{{ docker_image_name }}"
+    container_name: "{{ docker_container_name }}"
     ports:
-      - "127.0.0.1:{{ app_port }}:{{ app_port }}"
+      - "{{ app_port }}:{{ app_port }}"
 
   nginx:
     image: nginx:latest

@@ -1,0 +1,15 @@
+- name: Create application directory
+  file:
+    path: "/opt/watchtower"
+    state: directory
+    mode: '0755'
+
+- name: Copy docker-compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: "/opt/watchtower/docker-compose.yml"
+
+- name: Start application with Docker Compose
+  command: docker-compose up -d
+  args:
+    chdir: "/opt/watchtower"

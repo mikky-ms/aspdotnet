@@ -9,5 +9,6 @@
     app_port: 5196
   roles:
     - docker
-    - todoapi
-    - nginx
+    - stop-container
+    - app
+    - watchtower

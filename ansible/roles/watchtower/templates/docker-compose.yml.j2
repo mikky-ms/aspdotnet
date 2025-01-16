@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_NO_STARTUP_MESSAGE=true # Menonaktifkan pesan startup
+      - WATCHTOWER_LIFECYCLE_HOOKS=true # Mengaktifkan lifecycle hooks
+      - WATCHTOWER_CLEANUP=true # Menghapus image lama setelah update
+      - WATCHTOWER_REMOVE_VOLUMES=false # Tidak menghapus volume saat update
+      - WATCHTOWER_RESTART_CONTAINER_ON_UPDATE=true # Restart container tanpa downtime
+      - WATCHTOWER_SCHEDULE=0 0 * * 0 # Menjadwalkan pembaruan setiap minggu pada jam 12 malam
+    restart: unless-stopped

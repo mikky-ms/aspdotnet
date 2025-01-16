@@ -56,9 +56,3 @@
     update_cache: yes
     install_recommends: yes
     state: present
-
-#- name: Add users to the Docker group
-#  user:
-#    name: "{{ system_user }}"
-#    groups: docker
-#    append: yes
